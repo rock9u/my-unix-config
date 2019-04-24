@@ -19,7 +19,9 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
-export ANDROID_HOME=/Users/demandhub/Library/Android/sdk
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 export NODE_PATH='/usr/local/lib/node_modules'
 export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$JAVA_HOME/bin
 alias get_booted_ios='xcrun simctl list | grep Booted'
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
