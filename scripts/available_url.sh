@@ -13,12 +13,12 @@ if [ !-z $outputLocation ] ; then
 }
 while read LINE; do
     while read CONFIG; do
-        if [[ $LINE =~ ^https?:// ]] ; then 
-            curl -o /dev/null --silent --head --write-out "%{http_code},$LINE/$CONFIG\n" "$LINE/$CONFIG" >> $outputLocation
+        if [[ $LINE =~ ^https?:// ]] ; then
+            curl -o /dev/null --silent --head --write-out "%{http_code},$LINE$CONFIG\n" "$LINE$CONFIG" >> $outputLocation
         else
-            curl -o /dev/null --silent --head --write-out "%{http_code},http://$LINE/$CONFIG\n" "http://$LINE/$CONFIG" >> $outputLocation
-            curl -o /dev/null --silent --head --write-out "%{http_code},https://$LINE/$CONFIG\n" "https://$LINE/$CONFIG" >> $outputLocation
+            curl -o /dev/null --silent --head --write-out "%{http_code},http://$LINE$CONFIG\n" "http://$LINE$CONFIG" >> $outputLocation
+            curl -o /dev/null --silent --head --write-out "%{http_code},https://$LINE$CONFIG\n" "https://$LINE$CONFIG" >> $outputLocation
         fi
-        echo "Checking $LINE/$CONFIG"
+        echo "Checking $LINE$CONFIG"
     done < config.txt
 done < "$inputLocation"
